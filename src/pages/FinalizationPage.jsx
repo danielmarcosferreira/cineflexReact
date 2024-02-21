@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function FinalizationPage() {
@@ -20,7 +21,9 @@ export default function FinalizationPage() {
                 <p>CPF: 123.456.789-10</p>
             </FinalizationComponent>
 
-            <ButtonBottom>Voltar para Home</ButtonBottom>
+            <Link to={"/"}>
+                <ButtonBottom>Voltar para Home</ButtonBottom>
+            </Link>
         </FinalizedPageContainer>
     )
 }

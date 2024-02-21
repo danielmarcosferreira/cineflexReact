@@ -3,6 +3,7 @@ import FooterSeats from "../components/FooterSeats"
 import { useEffect, useState } from "react";
 import axios from "axios"
 import BuyerPart from "../components/BuyerPart";
+import { Link } from "react-router-dom";
 
 
 export default function SelectSeatsPage({ movies }) {
@@ -45,7 +46,9 @@ export default function SelectSeatsPage({ movies }) {
                 </SubtitleDiv>
             </SubtitleStyle>
             <BuyerPart />
-            <ButtonReserve>Reservar assento(s)</ButtonReserve>
+            <Link to={"/success"}>
+                <ButtonReserve>Reservar assento(s)</ButtonReserve>
+            </Link>
             <FooterSeats />
         </SelectSeatsStyle>
     )

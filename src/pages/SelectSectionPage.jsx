@@ -4,7 +4,7 @@ import FooterMovieTime from "../components/FooterMovieTime"
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-export default function SelectMovieTimePage() {
+export default function SelectSectionPage() {
     const [sections, setSections] = useState([])
     const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies/1/showtimes";
 

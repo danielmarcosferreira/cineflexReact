@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function MovieCard({ image }) {
     return (
         <MovieCardStyle>
-            <img src={image} />
+            <Link to={"/section"}>
+                <img src={image} />
+            </Link>
         </MovieCardStyle>
     )
 }
