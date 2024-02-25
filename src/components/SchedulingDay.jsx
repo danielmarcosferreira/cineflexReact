@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function SchedulingDay() {
+export default function SchedulingDay({id, weekday, date, showTimes}) {
     return (
         <SchedulingDayStyle>
-            <h3>Quinta-feira - 24/06/2021</h3>
+            <h3>{weekday} - {date}</h3>
             <div>
-                <Link to={"/seats"}>
-                    <button>15:00</button>
+                <Link to={`/seats/${showTimes[0].id}`}>
+                    <button>{showTimes[0].name}</button>
                 </Link>
-                <Link to={"/seats"}>
-                    <button>19:00</button>
+                <Link to={`/seats/${showTimes[1].id}`}>
+                    <button>{showTimes[1].name}</button>
                 </Link>
             </div>
         </SchedulingDayStyle>

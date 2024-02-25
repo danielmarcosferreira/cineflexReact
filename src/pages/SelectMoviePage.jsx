@@ -23,7 +23,7 @@ export default function SelectMoviePage() {
         <SelectMovieContainer>
             <h2>Selecione o filme</h2>
             <MovieCardContainer>
-                {movies.map((item) => <MovieCard image={item.posterURL} />)}
+                {movies.map((item) => <MovieCard key={item.id} movie={item} />)}
             </MovieCardContainer>
         </SelectMovieContainer>
     )
@@ -39,7 +39,7 @@ const SelectMovieContainer = styled.div`
         font-family: sans-serif;
         font-size: 34px;
         font-weight: lighter;
-        padding: 35px 0;
+        padding: 30px 0 0 0;
     }
 `
 

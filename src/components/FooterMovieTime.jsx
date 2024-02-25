@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
-export default function FooterMovieTime() {
+export default function FooterMovieTime({title, image}) {
     return (
         <FooterMovietimeStyle>
             <ImageFooter>
-                <img src={"https://upload.wikimedia.org/wikipedia/en/e/e6/Enola_Holmes_poster.jpeg"} />
+                <img src={image} />
             </ImageFooter>
-            <h4>Enola Holmes</h4>
+            <h4>{title}</h4>
         </FooterMovietimeStyle>
     )
 }

@@ -29,15 +29,16 @@ export default function FinalizationPage() {
 }
 
 const FinalizedPageContainer = styled.div`
-    margin-top: 100px;
+    margin: 100px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     h2 {
         color: #247A6B;
-        font-size: 24px;
-        padding: 0 130px;
+        font-size: 30px;
+        padding: 0 100px;
+        text-align: center;
     }
 `
 

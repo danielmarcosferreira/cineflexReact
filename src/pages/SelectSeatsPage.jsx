@@ -4,19 +4,28 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import BuyerPart from "../components/BuyerPart";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom"
+
 
 
 export default function SelectSeatsPage({ movies }) {
+    const { id } = useParams()
     const [seats, setSeats] = useState([])
-    const URL = "https://mock-api.driven.com.br/api/v5/cineflex/showtimes/7/seats";
+    const [name, setName] = useState()
+    const [image, setImage] = useState()
+    const [weekday, setWeekday] = useState()
+    const [hour, setHour] = useState()
 
     useEffect(() => {
-        const requisition = axios.get(URL)
+        const requisition = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`)
 
         requisition.then(resp => {
             setSeats(resp.data.seats)
-            console.log(seats);
-
+            setName(resp.data.movie.title)
+            setImage(resp.data.movie.posterURL)
+            setWeekday(resp.data.day.weekday)
+            setHour(resp.data.name)
+            console.log(resp.data);
         })
 
         requisition.catch(err => {
@@ -28,7 +37,7 @@ export default function SelectSeatsPage({ movies }) {
         <SelectSeatsStyle>
             <h2>Selecione o(s) assento(s)</h2>
             <SeatsMapStyle>
-                {seats.map((item) => <SeatButton color={"#C3CFD9"} border={"#7B8B99"}>{item.name}</SeatButton>)}
+                {seats.map((item) => <SeatButton key={item.id} color={"#C3CFD9"} border={"#7B8B99"}>{item.name}</SeatButton>)}
             </SeatsMapStyle>
 
             <SubtitleStyle>
@@ -49,7 +58,7 @@ export default function SelectSeatsPage({ movies }) {
             <Link to={"/success"}>
                 <ButtonReserve>Reservar assento(s)</ButtonReserve>
             </Link>
-            <FooterSeats />
+            <FooterSeats name={name} image={image} weekday={weekday} hour={hour}/>
         </SelectSeatsStyle>
     )
 }
@@ -58,6 +67,7 @@ const SelectSeatsStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 180px;
      h2 {
         text-align: center;
         font-family: sans-serif;
