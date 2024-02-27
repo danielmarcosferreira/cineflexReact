@@ -1,41 +1,40 @@
 import styled from "styled-components"
-import SchedulingDay from "../components/SchedulingDay"
-import FooterMovieTime from "../components/FooterMovieTime"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import SessionDay from "./SessionDay"
+import FooterSession from "./FooterSession"
+import { URL } from "../../constants/url"
 
-export default function SelectSectionPage({ title }) {
+
+export default function SessionPage({ title }) {
     const { id } = useParams()
     const [sections, setSections] = useState([])
     const [movieTitle, setMovieTitle] = useState()
     const [image, setImage] = useState()
 
     useEffect(() => {
-        const requisition = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`)
+        const promise = axios.get(`${URL}/movies/${id}/showtimes`)
 
-        requisition.then(resp => {
+        promise.then(resp => {
             setImage(resp.data.posterURL)
             setMovieTitle(resp.data.title)
             setSections(resp.data.days)
-            console.log(resp.data);
         })
 
-        requisition.catch(err => {
-            console.log(err.response.data);
-        })
+        promise.catch(err => console.log(err.response.data));
     }, [])
 
     return (
         <SelectMovieTimeContainer>
             <h2>Selecione o horário</h2>
-            {sections.map((item) => <SchedulingDay
+            {sections.map((item) => <SessionDay
                 key={item.id}
                 id={item.id}
                 weekday={item.weekday}
                 date={item.date}
                 showTimes={item.showtimes} />)}
-            <FooterMovieTime title={movieTitle} image={image} />
+            <FooterSession title={movieTitle} image={image} />
         </SelectMovieTimeContainer>
     )
 }

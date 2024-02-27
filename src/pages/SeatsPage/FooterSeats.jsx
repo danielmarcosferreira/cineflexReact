@@ -1,15 +1,15 @@
 import styled from "styled-components"
 
-export default function FooterSeats({name, image, weekday, hour}) {
+export default function FooterSeats({ movieName, imagePoster, movieTime, movieDay }) {
     return (
         <FooterSeatsStyle>
             <ImageFooter>
-                <img src={image} />
+                <img src={imagePoster} />
             </ImageFooter>
 
             <FooterText>
-                <h4>{name}</h4>
-                <h4>{weekday} - {hour}</h4>
+                <h4>{movieName}</h4>
+                <h4>{movieDay} - {movieTime}</h4>
             </FooterText>
         </FooterSeatsStyle>
     )

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function FinalizationPage() {
+export default function SuccessPage({ name, cpf, movieName, movieDay, movieTime }) {
     return (
         <FinalizedPageContainer>
             <h2>Pedido feito com sucesso!</h2>
             <FinalizationComponent>
                 <h3>Filme e sessão</h3>
-                <p>Enola Holmes</p>
-                <p>24/06/2021 15:00</p>
+                <p>{movieName}</p>
+                <p>{movieDay} {movieTime}</p>
             </FinalizationComponent>
             <FinalizationComponent>
                 <h3>Ingressos</h3>
@@ -17,8 +17,8 @@ export default function FinalizationPage() {
             </FinalizationComponent>
             <FinalizationComponent>
                 <h3>Filme e sessão</h3>
-                <p>Nome: João da Silva Sauro </p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {name} </p>
+                <p>CPF: {cpf}</p>
             </FinalizationComponent>
 
             <Link to={"/"}>
@@ -46,7 +46,7 @@ const FinalizationComponent = styled.div`
     width: 350px;
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 15px;
 
     h3 {
         font-size: 25px;

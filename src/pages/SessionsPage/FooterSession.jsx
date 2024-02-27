@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function FooterMovieTime({title, image}) {
+export default function FooterSession({title, image}) {
     return (
         <FooterMovietimeStyle>
             <ImageFooter>

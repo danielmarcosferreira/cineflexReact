@@ -1,23 +1,23 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import MovieCard from "../components/MovieCard"
+import MovieCard from "./MovieCard"
+import { URL } from "../../constants/url"
 
-export default function SelectMoviePage() {
+export default function MoviesPage() {
     const [movies, setMovies] = useState([])
-    const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
 
     useEffect(() => {
-        const requisition = axios.get(URL)
+        const promise = axios.get(`${URL}/movies`)
 
-        requisition.then(resp => {
-            setMovies(resp.data)
-        })
+        promise.then(resp => setMovies(resp.data))
 
-        requisition.catch(err => {
-            console.log(err.response.data)
-        })
+        promise.catch(err => console.log(err.response.data))
     }, [])
+
+    if (!movies) {
+        return <div>Carregando ....</div>
+    }
 
     return (
         <SelectMovieContainer>
@@ -47,5 +47,5 @@ const MovieCardContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 20px;
+    margin: 2px;
 `

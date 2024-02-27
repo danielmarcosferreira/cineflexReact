@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function SchedulingDay({id, weekday, date, showTimes}) {
+export default function SessionDay({id, weekday, date, showTimes}) {
     return (
         <SchedulingDayStyle>
             <h3>{weekday} - {date}</h3>
